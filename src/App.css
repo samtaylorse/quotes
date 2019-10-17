@@ -6,10 +6,6 @@
   font-size: calc(10px + 2vmin);
 }
 
-button {
-  font-size: calc(10px + 1vmin);
-}
-
 .next-quote-button {
   transition: transform 1s;
   position: absolute;
@@ -38,19 +34,24 @@ button {
 .Quote-List {
   position: relative;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 30px);
+  margin: 0 15px;
   text-align: center;
 }
 
 .Quote {
   position: absolute;
   top: 50%;
-  transform: translateY(-12em) scale(0);
+  transform: translateY(0) scale(0.4);
   width: 100%;
-  
   transition: opacity, transform;
   transition-duration: 1s;
   opacity: 0;
+}
+
+.Quote.showing {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
 }
 
 .Quote.hiding {
@@ -58,9 +59,9 @@ button {
   transform: translateY(-8em) scale(0.5);
 }
 
-.Quote.showing {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
+.Quote.hidden {
+  opacity: 0;
+  transform: translateY(-12em) scale(0);
 }
 
 .Quote .quote-content {
@@ -70,6 +71,5 @@ button {
 .Quote .quote-author {
   font-family: 'Homemade Apple', cursive;
   font-size: calc(10px + 1vmin);
-  font-style: italic;
   color: #c8c8c8;
 }

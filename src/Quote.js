@@ -3,29 +3,23 @@ import React, { useState, useLayoutEffect } from 'react';
 export default function(props) {
     const [loaded, setLoaded] = useState(false);
     useLayoutEffect(() => {
-        setLoaded(false);
         setTimeout(() => {
             setLoaded(true);
         }, 100);
     }, []);
-    
-    const showingIndex = loaded ? 0 : 1;
-    const hidingIndex = loaded ? 1 : 2;
-    const quoteClass = props.index === showingIndex
+
+    const quoteClass = !loaded
+        ? ''
+        : props.index === 0
         ? 'showing'
-        : props.index === hidingIndex
+        : props.index === 1
         ? 'hiding'
-        : ''; // hidden
+        : 'hidden';
 
     return (
         <div className={`Quote ${quoteClass}`}>
-            {loaded ?
-                <>
-                    <p className="quote-content">{props.content}</p>
-                    <p className="quote-author">{props.author}</p>
-                </> :
-                <p>Loading...</p> 
-            }
+            <p className="quote-content">{props.content}</p>
+            <p className="quote-author">{props.author}</p>
         </div>
     );
 }
