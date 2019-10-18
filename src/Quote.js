@@ -10,9 +10,9 @@ export default function(props) {
 
     const quoteClass = !loaded
         ? ''
-        : props.index === 0
+        : props.pos === 0
         ? 'showing'
-        : props.index === 1
+        : props.pos === 1
         ? 'hiding'
         : 'hidden';
 

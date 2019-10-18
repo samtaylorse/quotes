@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import QuoteList from './Quote-List';
+import QuoteList from './QuoteList';
 
 function App() {
-  const [quoteCount, setQuoteCount] = useState(0);
-  
+  const [quotes, setQuotes] = useState([]);
+
+  async function handleGetNextQuote() {
+    const response = await fetch('https://api.quotable.io/random');
+    const quote = await response.json();
+    setQuotes(oldQuotes => [...oldQuotes, quote]);
+  }
+
+  useEffect(() => {
+    handleGetNextQuote();
+  }, []);
+
   return (
     <div className="App">
-      <QuoteList quoteCount={quoteCount} />
-      <button className="next-quote-button" onClick={() => { setQuoteCount(quoteCount + 1) }}>
+      <QuoteList quotes={quotes} />
+      <button className="next-quote-button" onClick={handleGetNextQuote}>
           Next Quote
       </button>
     </div>
