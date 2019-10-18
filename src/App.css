@@ -7,18 +7,24 @@
 }
 
 .next-quote-button {
-  transition: transform 1s;
+  transition-property: transform, background-color, border-color;
+  transition-duration: 1s, 0.15s, 0.15s;
   position: absolute;
   bottom: 10vh;
   left: 50vw;
   transform: translateX(-50%);
   padding: calc(1vmin) calc(5px + 1vmin);
   border-radius: calc(5px + 1vmin);
-  background-color: #48c5d1d6;
+  background-color: #3da7b1;
   border: 2px solid #366d73;
   color: #292c35;
   font-family: 'Amatic SC', cursive;
   font-size: calc(25px + 1vmin);
+}
+
+.next-quote-button:active {
+  background-color: #3b99a2;
+  border-color: #2a4d51;
 }
 
 .next-quote-button:focus {
@@ -26,9 +32,8 @@
 }
 
 .next-quote-button:hover {
-  outline: none;
-  transform: translateX(-50%) scale(1.1);
   cursor: pointer;
+  transform: translateX(-50%) scale(1.1);
 }
 
 .Quote-List {
